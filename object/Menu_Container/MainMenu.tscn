@@ -1,18 +1,20 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/[mm]fire_light.png" type="Texture" id=1]
 [ext_resource path="res://assets/[mm]background.png" type="Texture" id=2]
 [ext_resource path="res://object/Menu_Container/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://object/Menu_Container/menufont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://object/29986__thanvannispen__stone-on-stone_1.wav" type="AudioStream" id=5]
+[ext_resource path="res://object/Menu_Container/[ONTIVA.COM] Gloss - Medieval Fantasy Background Music No Copyright-HQ.WAV" type="AudioStream" id=6]
 
-[sub_resource type="DynamicFontData" id=8]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/QuiteMagicalRegular-8VA2.ttf"
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=2]
 size = 32
-font_data = SubResource( 8 )
+font_data = SubResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=4]
@@ -23,16 +25,16 @@ bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 1, 1, 1, 1 )
 
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
 [sub_resource type="StyleBoxEmpty" id=12]
-
-[sub_resource type="StyleBoxEmpty" id=13]
-
-[sub_resource type="StyleBoxEmpty" id=14]
-
-[sub_resource type="StyleBoxEmpty" id=15]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -52,7 +54,7 @@ __meta__ = {
 }
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 180, 650 )
+position = Vector2( 190, 646 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -73,7 +75,7 @@ margin_left = -166.5
 margin_top = -140.0
 margin_right = 166.5
 margin_bottom = -112.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.611765, 0.596078, 0.662745, 1 )
 text = "PRESS ANY KEY TO CONTINUE"
 __meta__ = {
@@ -95,12 +97,13 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -89.0
 margin_bottom = 34.0
-custom_styles/hover = SubResource( 10 )
+custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
 custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "< BACK"
 flat = true
 __meta__ = {
@@ -123,66 +126,65 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
-margin_top = 15.0
 margin_right = 134.0
-margin_bottom = 43.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/focus = SubResource( 13 )
-custom_styles/disabled = SubResource( 14 )
-custom_styles/normal = SubResource( 15 )
+margin_bottom = 28.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 4 )
 text = "NEW GAME"
 flat = true
 
 [node name="Load" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
-margin_top = 47.0
+margin_top = 32.0
 margin_right = 134.0
-margin_bottom = 75.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/focus = SubResource( 13 )
-custom_styles/disabled = SubResource( 14 )
-custom_styles/normal = SubResource( 15 )
+margin_bottom = 60.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 4 )
 text = "LOAD GAME"
 flat = true
 
 [node name="Options" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
-margin_top = 79.0
+margin_top = 64.0
 margin_right = 134.0
-margin_bottom = 107.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/focus = SubResource( 13 )
-custom_styles/disabled = SubResource( 14 )
-custom_styles/normal = SubResource( 15 )
+margin_bottom = 92.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTIONS"
 flat = true
 
 [node name="Credits" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
-margin_top = 111.0
+margin_top = 96.0
 margin_right = 134.0
-margin_bottom = 139.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/focus = SubResource( 13 )
-custom_styles/disabled = SubResource( 14 )
-custom_styles/normal = SubResource( 15 )
+margin_bottom = 124.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 4 )
 text = "CREDITS"
 flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
-margin_top = 143.0
+margin_top = 128.0
 margin_right = 134.0
-margin_bottom = 171.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/focus = SubResource( 13 )
-custom_styles/disabled = SubResource( 14 )
-custom_styles/normal = SubResource( 15 )
+margin_bottom = 156.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 4 )
 text = "QUIT"
 flat = true
@@ -196,7 +198,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Credits" type="Control" parent="CanvasLayer/Menu/Container"]
+[node name="Credits" type="Control" parent="CanvasLayer/Menu/Container" groups=[
+"UI",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -228,13 +232,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Options" type="Control" parent="CanvasLayer/Menu/Container" groups=[
+"UI",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu/Container/Options"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 113.147
+margin_top = -168.19
+margin_right = 245.147
+margin_bottom = -128.19
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Vsync" type="CheckButton" parent="CanvasLayer/Menu/Container/Options/VBoxContainer"]
+margin_right = 132.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 4 )
+text = "vsync"
+
 [node name="Container_back_button" type="Button" parent="CanvasLayer/Menu/Container"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -79.0
+margin_left = -89.0
 margin_bottom = 34.0
 custom_fonts/font = ExtResource( 4 )
-text = "< Back"
+text = "< BACK"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -250,10 +278,27 @@ text = "Version 1.0.0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MenuSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Scene_Change" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="CanvasLayer/Menu/Back_Button" to="." method="_on_Back_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Load" to="." method="_on_Load_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Container/Options/VBoxContainer/Vsync" to="." method="_on_Vsync_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/Container/Container_back_button" to="." method="_on_Container_back_button_pressed"]

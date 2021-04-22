@@ -4,8 +4,10 @@ onready var light = get_node("Position2D/Light2D")
 onready var pos2d = get_node("Position2D")
 onready var menu = get_node("CanvasLayer/Menu")
 onready var label = get_node("Label")
+onready var menusound = get_node("MenuSound")
+onready var clicksound = get_node("ClickSound")
 
-enum {MENU,STARTH,STARTS,TRANSH,TRANSS,MAIN}
+enum {MENU,STARTH,STARTS,TRANSH,TRANSS,MAIN,MOVE}
 var state setget set_state,get_state
 
 var math = 1
@@ -18,12 +20,16 @@ func get_state():
 
 func _ready():
 	set_state(MENU)
+	menusound.play()
+	$Scene_Change.hide()
 
 func _physics_process(delta):
+	menusound_check()
 	match state:
 		MENU:
 			menu_state(delta)
 			label_loop(delta)
+			menusound_trigger()
 		STARTH:
 			start_state(1,delta)
 		STARTS:
@@ -34,6 +40,8 @@ func _physics_process(delta):
 			transition_state(2,delta)
 		MAIN:
 			main_state()
+		MOVE:
+			move_state(delta)
 
 func menu_state(delta):
 	light_animation(delta)
@@ -71,6 +79,20 @@ func transition_state(obj,delta):
 func main_state():
 	pass
 
+func move_state(delta):
+	var t = $Scene_Change
+	t.show()
+	t.modulate.a += delta
+	if t.modulate.a >= 1:
+		get_tree().change_scene("res://object/World_Container/Super_World.tscn")
+
+func menusound_check():
+	if state != MENU and state != STARTH:
+		menusound.stop()
+
+func menusound_trigger():
+	if menusound.playing != true:
+		menusound.play()
 
 func light_animation(delta):
 	var scale = rand_range(light.scale.x-delta,light.scale.x+delta)
@@ -88,6 +110,12 @@ func _input(event):
 	if event is InputEventScreenTouch and event.is_pressed() and state == MENU:
 		set_state(STARTH)
 
+func hide_UI():
+	var UI = get_tree().get_nodes_in_group("UI")
+	for n in UI:
+		n.hide()
+
+
 #SIGNAL CODE HERE
 func _on_Back_Button_pressed():
 	set_state(TRANSH)
@@ -96,18 +124,32 @@ func _on_Quit_pressed():
 	get_tree().quit()
 
 func _on_Start_pressed():
-	pass # Replace with function body.
+	clicksound.play()
+	set_state(MOVE)
 
 func _on_Load_pressed():
+	clicksound.play()
 	pass # Replace with function body.
 
 func _on_Credits_pressed():
+	clicksound.play()
+	hide_UI()
 	$CanvasLayer/Menu/Container.show()
 	$CanvasLayer/Menu/Container/Credits.show()
 
 func _on_Options_pressed():
-	pass # Replace with function body.
+	clicksound.play()
+	hide_UI()
+	$CanvasLayer/Menu/Container.show()
+	$CanvasLayer/Menu/Container/Options.show()
 
 #Container Signal Code
 func _on_Container_back_button_pressed():
 	$CanvasLayer/Menu/Container.hide()
+
+func _on_Vsync_pressed():
+	clicksound.play()
+	if OS.vsync_enabled:
+		OS.vsync_enabled = false
+	else:
+		OS.vsync_enabled = true
